@@ -5,6 +5,7 @@ import heroImg from './assets/hero.png'
 import './App.css'
 import Login from './components/Auth/Login'
 import EmployeeDashboard from './components/Dashboard/EmployeeDashboard'
+import AdminDashboard from './components/Dashboard/AdminDashboard'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,7 +13,8 @@ function App() {
   return (
     <>
     {/* <Login/> */}
-    <EmployeeDashboard/>
+    {/* <EmployeeDashboard/> */}
+    <AdminDashboard/>
     </>
      
   )
