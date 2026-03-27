@@ -4,10 +4,11 @@ import './index.css'
 import App from './App.jsx'
 import Authcontext from './context/Authcontext.jsx'
 import Taskcontext from './context/Taskcontext.jsx'
+import Authprovider from './context/Authprovider.jsx'
 
 localStorage.clear()
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Authcontext><Taskcontext><App /></Taskcontext></Authcontext>
+    <Authprovider><App/></Authprovider>
   </StrictMode>,
 )
