@@ -12,16 +12,18 @@ import { getLocalStorage, setLocalStorage } from './utils/Localstorage'
 function App() {
   const [user, setUser] = useState(null)
  const [loggedInUserData, setLoggedInUserData] = useState(null)
-  // useEffect(() => {
-  // if(authData)
-  // { const loggedInUser= localStorage.getItem('loggedInUser')
-  //   if(loggedInUser){
-  //     setUser(loggedInUser.role)
-  //   }
-  // }
-  // }, [authData])
+  useEffect(() => {
+   const loggedInUser= localStorage.getItem('loggedInUser')
+    if(loggedInUser){
+      const userData=JSON.parse(loggedInUser)
+      setUser(loggedInUser.role)
+      setLoggedInUserData(userData.data)
+    }
+  
+  }, [])
 
 useEffect(() => {
+  // localStorage.clear()
   setLocalStorage()
  getLocalStorage()
 }, [])
@@ -38,7 +40,7 @@ useEffect(() => {
       if (employee)
          { setUser( 'employee') 
       setLoggedInUserData(employee)
-      localStorage.setItem('loggedInUser', JSON.stringify({ role: 'employee' }))
+      localStorage.setItem('loggedInUser', JSON.stringify({ role: 'employee',data:employee}))
     }
 
 
