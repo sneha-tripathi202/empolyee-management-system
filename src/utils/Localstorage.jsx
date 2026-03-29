@@ -1,7 +1,7 @@
 const employees = [
   {
     "id": 1,
-    "name": "Amit Sharma",
+    "name": "Amit",
     "email": "em1@e.com",
     "password": "empPass123",
     "tasks": [
@@ -48,7 +48,7 @@ const employees = [
   },
   {
     "id": 2,
-    "name": "Priya Verma",
+    "name": "Priya",
     "email": "employee2@example.com",
     "password": "empPass234",
     "tasks": [
@@ -95,7 +95,7 @@ const employees = [
   },
   {
     "id": 3,
-    "name": "Rohan Mehta",
+    "name": "Rohan",
     "email": "employee3@example.com",
     "password": "empPass345",
     "tasks": [
@@ -142,7 +142,7 @@ const employees = [
   },
   {
     "id": 4,
-    "name": "Sneha Kapoor",
+    "name": "Sneha",
     "email": "employee4@example.com",
     "password": "empPass456",
     "tasks": [
@@ -189,7 +189,7 @@ const employees = [
   },
   {
     "id": 5,
-    "name": "Anjali Singh",
+    "name": "Anjali",
     "email": "employee5@example.com",
     "password": "empPass567",
     "tasks": [
