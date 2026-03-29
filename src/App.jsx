@@ -11,42 +11,55 @@ import { getLocalStorage, setLocalStorage } from './utils/Localstorage'
 
 function App() {
   const [user, setUser] = useState(null)
+ const [loggedInUserData, setLoggedInUserData] = useState(null)
+  // useEffect(() => {
+  // if(authData)
+  // { const loggedInUser= localStorage.getItem('loggedInUser')
+  //   if(loggedInUser){
+  //     setUser(loggedInUser.role)
+  //   }
+  // }
+  // }, [authData])
 
 useEffect(() => {
   setLocalStorage()
-  getLocalStorage()
+ getLocalStorage()
 }, [])
 
 
+  const authData = useContext(AuthContext)
 
-//   const authData=useContext(AuthContext)
-// console.log(authData.admin);
+  const handleLogin = (email, password) => {
+    if (email == "admin@me.com" && password == '123') {
+      setUser( 'admin' )
+      localStorage.setItem('loggedInUser', JSON.stringify({ role: 'admin' }))
+    } else if (authData) {
+      const employee = authData.employees.find((e) => email == e.email && e.password == password)
+      if (employee)
+         { setUser( 'employee') 
+      setLoggedInUserData(employee)
+      localStorage.setItem('loggedInUser', JSON.stringify({ role: 'employee' }))
+    }
 
-// const handleLogin=(email,password)=>{
-//   if(email=="admin@me.com" && password=='123'){
-//     setUser('admin')
-//     console.log('this is admin');
-    
-//   }else if(email=='user@me.com'&& password=='123'){
-//     console.log('this is user');
-//     setUser('employee')
-//   }
 
-//   else{
-//     alert('invalid credentials')
-//   }
-// }
+    }
+
+    else {
+      alert('invalid credentials')
+    }
+  }
 
 
 
 
   return (
     <>
-    {/* {!user ?<Login handleLogin={ handleLogin}/>:''}    */}
-   {user=='admin'?<AdminDashboard/>:<EmployeeDashboard/>}
+      {!user ? <Login handleLogin={handleLogin} /> : ''}
+      {user == 'admin' ? <AdminDashboard /> :( user=="employee" ? <EmployeeDashboard data={loggedInUserData}/>:null)}
+
     </>
-     
-  )
-}
+
+  )}
+
 
 export default App
