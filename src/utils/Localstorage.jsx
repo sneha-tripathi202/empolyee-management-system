@@ -202,7 +202,7 @@ const employees = [
         "active": true,
         "newTask": true,
         "completed": false,
-        "failed": false
+        "failed": true
       },
       {
         "taskNumber": 2,
