@@ -10,8 +10,9 @@ const Login = ({handleLogin}) => {
       setPassword('');
    }
     return (
-        <div className='w-screen h-screen flex items-center justify-center'>
-            <div className='border-2 rounded-xl border-emerald-600 p-20 '>
+        <div className='w-screen h-screen flex items-center justify-center flex-col'>
+            <div><h1 className='text-4xl font-bold m-10'>Employee Management System</h1></div>
+            <div className='border-2 rounded-xl border-emerald-600 p-10 '>
 
                 <form onSubmit={(e)=>{
                     submitform(e)
