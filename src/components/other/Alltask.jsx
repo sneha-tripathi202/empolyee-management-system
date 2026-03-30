@@ -5,8 +5,8 @@ const Alltask = () => {
   const [userData]= useContext(AuthContext)
   
   return (
-    <div className='bg-[#1c1c1c] rounded mt-5 p-5 h-48 '>
-      <div className='bg-white-400 py-2 mb-2 px-4 flex justify-between rounded'>
+    <div className='bg-[#1c1c1c] rounded mt-5 p-5 h-full mb-8'>
+      <div className='bg-white-400 py-2 mb-2 px flex justify-between rounded'>
         <h2 className='  px-8 py-2 bg-red-600'>Employee Name</h2>
         <h3 className='px-8 py-2 bg-red-600'>New Task</h3>
         <h5 className=' px-8 py-2 bg-red-600'>Active Task</h5>
@@ -15,7 +15,7 @@ const Alltask = () => {
         </div>
        <div >
         {userData.map((elem)=>{
-        return <div className='bg-[#1c1c1c] py-2 mb-2 px-4 flex justify-between items-center'>
+        return <div className='bg-[#242424] py-2 mb-4 px-12 flex justify-between items-center'>
         <h2 className='w-1/5m bg-black-600'> {elem.name}</h2>
         <h3 className='w-1/5m  text-blue-600'>{elem.taskCount.newTask}</h3>
         <h5 className='w-1/5m  text-yellow-600'>{elem.taskCount.active}</h5>
