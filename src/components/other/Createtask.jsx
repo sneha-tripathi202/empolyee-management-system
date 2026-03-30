@@ -1,31 +1,48 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { AuthContext } from '../../context/Authprovider'
 
 const Createtask = () => {
-    const [taskTitle, setTaskTitle] = useState('')
+    const [title, setTitle] = useState('')
     const [taskDescription, setTaskDescription] = useState('')
     const [taskDate, setTaskDate] = useState('')
     const [asignTo, setAsignTo] = useState('')
     const [category, setCategory] = useState('')
  
  const [newTask, setNewTask] = useState({})
+   const [userData,setUserData]= useContext(AuthContext)
  
  
-    function submitHandler(e){
-    e.preventDefault()
-    setNewTask({taskTitle,taskDescription,taskDate,category,active:false,newTask:true,failed :false ,completed:false})
+   function submitHandler(e){
+       e.preventDefault()
+      const taskObj = {
+    title,
+    taskDescription,
+    taskDate,
+    category,
+    active: false,
+    newTask: true,
+    failed: false,
+    completed: false
+  };
+
+    //    setNewTask({taskTitle,taskDescription,taskDate,category,active:false,newTask:true,failed :false ,completed:false})
     
-    const data=JSON.parse(localStorage.getItem('employees'))
+    const data=[...userData ]   
     data.forEach((ele)=>{
-     if(asignTo==ele.name) {
-         ele.tasks.push(newTask)
-         console.log(ele.tasks);
-         
+        if(asignTo==ele.name) {
+            ele.tasks.push(taskObj)
+            ele.taskCount.newTask+=1
+            ele.taskNumber+1
+            console.log(ele.tasks.length);
+
         }
-    
-           
-    })
-    
-    setTaskTitle('')
+        })
+        setUserData(data)
+        
+   console.log(data);
+   
+    // localStorage.setItem('employees',JSON.stringify(data))
+    setTitle('')
     setTaskDescription('')
    setTaskDate('')
      setAsignTo('')
@@ -37,9 +54,9 @@ const Createtask = () => {
                 <form onSubmit={(e)=>{submitHandler(e)}} className='flex flex-wrap  w-full  items-start justify-between'>
                     <div className='w-1/2'><div>
                         <h3 className='text-sm text-gray-300 mb-0.5'>Task Title</h3>
-                        <input value={taskTitle}
+                        <input value={title}
                         onChange={(e)=>{
-                            setTaskTitle(e.target.value)
+                            setTitle(e.target.value)
                         }}  className='text-sm py-1 px-2 w-4/5 rounded outline-none bg-transparent border' type="text" placeholder='Make a Ui design' /></div>
                         <div><h3 className='text-sm text-gray-300 mb-0.5'>Date</h3>
                         <input value={taskDate}
